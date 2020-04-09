@@ -11,6 +11,7 @@ node {
             sh 'apk add python'
             sh 'apk add py-pip'
             sh 'pip install virtualenv'
+            sh 'easy_install-2.7 nose'
         }
         stage("Install Requirements") {
             sh 'make install'
