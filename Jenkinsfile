@@ -9,8 +9,8 @@ node {
         stage("Install make"){
             sh 'apk add make'
             sh 'apk add python'
-            sh 'apk add virtualenv'
-            sh 'apk add pip'
+            sh 'apk add py-pip'
+            sh 'pip install virtualenv'
         }
         stage("Install Requirements") {
             sh 'make install'
