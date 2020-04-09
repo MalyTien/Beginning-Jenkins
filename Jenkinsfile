@@ -5,11 +5,10 @@ node {
         git "https://github.com/MalyTien/Beginning-Jenkins.git"
     }
     
-    stage("Install make"){
-        sh 'apk add make'
-    }
-
     dir('Lesson5/ActivityA') {
+        stage("Install make"){
+            sh 'apk add make'
+        }
         stage("Install Requirements") {
             sh 'make install'
         }
