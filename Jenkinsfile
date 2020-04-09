@@ -6,14 +6,20 @@ node {
     }
 
     dir('Lesson5/ActivityA') {
+        stage("Install"){
+            install:
+	            virtualenv testing
+	            . testing/bin/activate
+	            pip install --user -r requirements.txt
+
+            jenkins_test:
+	            testing/bin/nosetests app/ -v
         stage("Install Requirements") {
-            sh 'virtualenv testing'
-            sh '. testing/bin/activate'
-            sh 'pip install --user -r requirements.txt'
+            sh 'make install'
         }
 
         stage("Run Tests") {
-            sh 'testing/bin/nosetests app/ -v'
+            sh 'make jenkins_test'
         }
 
         stage("Deploy") {
